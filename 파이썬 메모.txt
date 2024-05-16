@@ -13,3 +13,8 @@
 
 (pythonsource) D:\source\pythonsource\Scripts>
 ==> 가상환경 활성화
+
+
+*.ipynb : 주피터 노트북 파일
+
+주피터 노트북 : 파이썬 셀단위로 실행 편집기
