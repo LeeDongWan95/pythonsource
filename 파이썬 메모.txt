@@ -44,3 +44,17 @@ pip list => 확인
 
 pip install openpyxl
 pip install Pillow
+
+
+크롤링 - 정보수집
+
+pip install fake-useragent
+pip install lxml
+pip install selenium
+pip install beautifulsoup4
+
+자바스크립트 ==> json
+{} => JSON.strigfy()
+
+파이썬 ==> json
+dict ==> json
