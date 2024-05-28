@@ -4,7 +4,12 @@ from bs4 import BeautifulSoup
 from xlsx_write import write_excel_template
 from datetime import datetime
 
-# https://www.clien.net/service/board/lecture?&od=T31&category=0&po=0~4
+
+# https://www.clien.net/service/board/lecture?&od=T31&category=0&po=0
+# https://www.clien.net/service/board/lecture?&od=T31&category=0&po=1
+# https://www.clien.net/service/board/lecture?&od=T31&category=0&po=2
+# https://www.clien.net/service/board/lecture?&od=T31&category=0&po=3
+# https://www.clien.net/service/board/lecture?&od=T31&category=0&po=4
 
 
 userAgent = UserAgent()
@@ -29,16 +34,12 @@ with requests.Session() as s:
         # print(soup)
 
         # 행 가져오기
-        rows = soup.select("div.list_content > div.list_item")
+        rows = soup.select("div.list_content > div.list_item.symph_row")
 
         for row in rows:
-            # 타이틀 출력
-            # div_content > div.list_content > div:nth-child(1) > div.list_title > a > span.subject_fixed
-            title = row.select_one("div.list_title > a > span.subject_fixed")
 
-            # 시간
-            # div_content > div.list_content > div:nth-child(1) > div.list_title > a > span > span
-            time = row.select_one("div.list_title > span > span")
+            title = row.select_one("div.list_title > a > span.subject_fixed")
+            time = row.select_one("div.list_time > span > span")
 
             # 2024-04-27 07:22:02 ==> 2024-04-27
             print(title.text.strip(), time.text.strip()[:10])
@@ -46,7 +47,8 @@ with requests.Session() as s:
 
         print()
 
-        # 파일저장 : clien_240527.xlsx
-        # 오늘날짜
-        today = datetime.now().strftime("%Y%m%d")
-        write_excel_template(f"clien_{today}.xlsx", "팁과강좌", lists)
+    # 파일 저장 : clien_240527.xlsx
+    # 오늘날짜
+    today = datetime.now().strftime("%Y%m%d")
+
+    write_excel_template(f"clien_{today}.xlsx", "팁과강좌", lists)

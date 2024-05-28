@@ -58,3 +58,9 @@ pip install beautifulsoup4
 
 파이썬 ==> json
 dict ==> json
+
+
+
+naver open api
+ufWHi_oYE6VVsv_4EZPI
+2fzgfax8Z8
