@@ -65,3 +65,13 @@ dict ==> json
 naver open api
 ufWHi_oYE6VVsv_4EZPI
 2fzgfax8Z8
+
+구글
+1) 코랩 검색
+2) New NoteBook
+
+pandas
+numpy
+matplotlib
+
+==> 패키지 설치 필요 없음
