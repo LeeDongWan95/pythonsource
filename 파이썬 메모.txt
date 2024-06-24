@@ -86,4 +86,31 @@ pandas(판다스)
    1) 행 단위
       head(), tail(), sample()
    2) 열 단위
-      
+
+
+
+장고 프로젝트
+
+django(python) == spring boot
+
+~~~\myapp1>django-admin startproject config .
+          >python manage.py runserver
+          >python manage.py startapp todo
+          >python manage.py migrate (데이터베이스 변경사항 적용)
+          >python manage.py createsuperuser (어드민 계정 활성화)
+          >python manage.py makemigrations (데이터베이스 변경)
+
+스프링 MVC 패턴 : Model(Database), View(화면단-jsp, 템플릿 html), Controller(Controller + Service)
+- url : controller 위에 경로지정
+
+
+장고 MTV 패턴 : Model(Database), Templates(html), View(View)
+- urls.py : 사용하는 url 정의
+   1) config / urls.py
+   2) 각 앱 / urls.py
+
+
+db : ORM
+
+프로젝트 아래에 db 가 생성됨
+내장DB 연동
