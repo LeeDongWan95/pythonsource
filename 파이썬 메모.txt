@@ -107,8 +107,8 @@ config : 다른 폴더명 사용 가능
 
           > python manage.py sqlmigrate 앱이름 번호
 
-          > python manage.py shell
-          
+          > python manage.py shell : 파이썬 코드를 한단계씩 실행할 수 있게 함 
+
 sql 쿼리문 대체
 select * from person; == Person.objects.all()
 
