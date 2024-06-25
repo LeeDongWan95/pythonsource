@@ -93,12 +93,40 @@ pandas(판다스)
 
 django(python) == spring boot
 
+config : 다른 폴더명 사용 가능
 ~~~\myapp1>django-admin startproject config .
-          >python manage.py runserver
-          >python manage.py startapp todo
-          >python manage.py migrate (데이터베이스 변경사항 적용)
-          >python manage.py createsuperuser (어드민 계정 활성화)
-          >python manage.py makemigrations (데이터베이스 변경)
+          > python manage.py startapp 앱이름
+          > python manage.py migrate (데이터베이스 변경사항 적용)
+
+          > python manage.py runserver
+          > python manage.py createsuperuser (어드민 계정 활성화)
+
+          > Model 정의 + 수정
+          > python manage.py makemigrations (데이터베이스 변경)
+          > python manage.py migrate (데이터베이스 변경사항 적용)
+
+          > python manage.py sqlmigrate 앱이름 번호
+
+          > python manage.py shell
+          
+sql 쿼리문 대체
+select * from person; == Person.objects.all()
+
+insert into values(); == person = Person() => person.save()
+                         Person.objects.create(first_name='park', last_name='jiho')
+
+get 으로 하는경우 오류가 발생하고 filter 를 사용하면 빈값을 준다
+select * from person where first_name='park'; == Person.objects.get(first_name='park')
+                                              == Person.objects.filter(first_name='park')
+                                              == Person.objects.get(id=5)
+                                              == Person.objects.filter(first_name__contains='pa')
+                                              == Person.objects.filter(first_name__icontains='PA')
+
+
+                                             
+
+
+
 
 스프링 MVC 패턴 : Model(Database), View(화면단-jsp, 템플릿 html), Controller(Controller + Service)
 - url : controller 위에 경로지정
