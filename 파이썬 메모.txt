@@ -94,7 +94,7 @@ pandas(판다스)
 django(python) == spring boot
 
 config : 다른 폴더명 사용 가능
-~~~\myapp1>django-admin startproject config .
+~~~\myapp1> django-admin startproject config .
           > python manage.py startapp 앱이름
           > python manage.py migrate (데이터베이스 변경사항 적용)
 
@@ -121,11 +121,6 @@ select * from person where first_name='park'; == Person.objects.get(first_name='
                                               == Person.objects.get(id=5)
                                               == Person.objects.filter(first_name__contains='pa')
                                               == Person.objects.filter(first_name__icontains='PA')
-
-
-                                             
-
-
 
 
 스프링 MVC 패턴 : Model(Database), View(화면단-jsp, 템플릿 html), Controller(Controller + Service)
