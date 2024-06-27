@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "board",
+    "common",
 ]
 
 MIDDLEWARE = [
@@ -123,3 +124,18 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# 로그인 성공 시 이동할 URL
+LOGIN_REDIRECT_URL = "/"
+# 로그아웃 성공 시 이동할 URL
+LOGOUT_REDIRECT_URL = "/"
+
+# 내 네이버 이메일을 이용해 client 에게 이메일 전송하기
+DEFAULT_FROM_EMAIL = ""  # 네이버 이메일
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+EMAIL_HOST = "smtp.naver.com"
+EMAIL_HOST_USER = ""  # 네이버 아이디
+EMAIL_HOST_PASSWORD = ""  # 네이버 비밀번호
+EMAIL_PORT = 465
