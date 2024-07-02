@@ -1,9 +1,26 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post
+from .models import Post, Comment
 from .forms import PostForm
 from django.contrib.auth.decorators import login_required
 
 from django.core.paginator import Paginator
+from django.http import JsonResponse
+
+
+def comment_create(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    if request.method == "POST":
+        content = request.POST.get("content").strip()
+
+        # form 을 사용하지 않는 방법에서 comment 를 생성
+        Comment.objects.create(user=request.user, post=post, content=content)
+
+        # comment = Comment(user=request.user, post=post, content=content)
+        # comment.save()
+
+        return redirect("blog:detail", post_id)
+
+    return redirect("blog:detail", post_id)
 
 
 def delete(request, post_id):
@@ -39,6 +56,10 @@ def create(request):
             post = form.save(commit=False)
             post.user = request.user
             post.save()
+
+            # 태그 저장
+            form.save_m2m()
+
             # 리스트로 이동
             return redirect("blog:list")
             # return redirect("blog:detail", post.id)
@@ -68,4 +89,27 @@ def detail(request, post_id):
 
     post = get_object_or_404(Post, id=post_id)
 
-    return render(request, "blog/post.html", {"post": post})
+    # 로그인 유저가 해당 계시물에 좋아요 했는지 여부
+    is_liked = False
+    if post.likes.filter(id=request.user.id).exists():
+        is_liked = True
+
+    return render(request, "blog/post.html", {"post": post, "is_liked": is_liked})
+
+
+def post_like(request, post_id):
+
+    post = get_object_or_404(Post, id=post_id)
+
+    # 로그인 유저가 해당 계시물에 좋아요 했는지 여부
+    is_liked = post.likes.filter(id=request.user.id).exists()
+
+    is_liked_change = False
+
+    if is_liked:
+        post.likes.remove(request.user)
+    else:
+        post.likes.add(request.user)
+        is_liked_change = True
+
+    return JsonResponse({"likes": post.likes.count(), "is_liked": is_liked_change})

@@ -137,3 +137,42 @@ db : ORM
 
 프로젝트 아래에 db 가 생성됨
 내장DB 연동
+
+
+django
+
+pip install django-taggit : 블로그 해쉬태그 기능 
+pip install django-social-share : 계시물 공유하기 기능
+
+
+
+서버 운영
+- 운영체제(리눅스, 윈도우즈서버) 설치
+- 데이터베이스 서버 설치
+- 웹서버 설치
+- 도메인 등록
+
+클라우드 시스템
+- AWS(아마존 웹 서비스)
+- Azure(MS 애저)
+
+
+pythonanywhere
+d*eh*dhks***@naver.com
+*h*dh*s****
+
+AWS
+d*eh*dhks***@naver.com
+*la*n****
+
+
+ssh -i "C:\Users\soldesk\aws\AWS_DW.pem" ubuntu@ec2-13-209-104-116.ap-northeast-2.compute.amazonaws.com
+
+
+
+리눅스 명령어
+
+도커 설치
+curl -fsSL https://get.docker.com | sudo sh
+
+몽도디비 설치
